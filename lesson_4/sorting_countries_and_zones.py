@@ -14,7 +14,7 @@ def driver():
     wd.quit()
 
 
-def test_click_all_items(driver):
+def test_sorting_countries_and_zones(driver):
     driver.implicitly_wait(10)
     countries_with_zones = []
     name_country = []
@@ -28,9 +28,10 @@ def test_click_all_items(driver):
     for i in countries_with_zones:
         name_zones = []
         driver.find_element(By.XPATH, f"//*[contains(text(),'{i}')]").click()
-        zones = driver.find_elements(By.CSS_SELECTOR, '.dataTable td:nth-child(3) [name*="zones"]')
+        zones = driver.find_elements(By.CSS_SELECTOR, '.dataTable td:nth-child(3)')
+        zones.pop()
         for zone_2 in zones:
-            tec = zone_2.get_attribute('value')
-            name_zones.append(tec)
+            zone_name = zone_2.text
+            name_zones.append(zone_name)
         driver.find_element(By.XPATH, "//*[contains(text(),'Countries')]").click()
         assert sorted(name_zones) == name_zones, f"Название зон в блоке {i} не в алфавитном порядке"

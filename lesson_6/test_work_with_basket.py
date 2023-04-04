@@ -20,7 +20,6 @@ def test_delete_duck_from_basket(driver):
         driver.find_element(By.CSS_SELECTOR, '[name="add_cart_product"]').click()
         wait.until(EC.presence_of_element_located((By.XPATH, f"//*[@class='quantity'][contains(text(),'{i}')]")))
         driver.find_element(By.CSS_SELECTOR, '.general-0 a').click()
-
     driver.find_element(By.CSS_SELECTOR, '#cart .link').click()
     elements = driver.find_elements(By.CSS_SELECTOR, '.dataTable .item')
     for _ in range(1, len(elements)):

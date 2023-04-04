@@ -24,6 +24,6 @@ def test_delete_duck_from_basket(driver):
     driver.find_element(By.CSS_SELECTOR, '#cart .link').click()
     elements = driver.find_elements(By.CSS_SELECTOR, '.dataTable .item')
     for _ in range(1, len(elements)):
-        driver.find_element(By.CSS_SELECTOR, '[name="remove_cart_item"]').click()
         data_table = driver.find_element(By.CSS_SELECTOR, '#box-checkout-summary tbody')
+        driver.find_element(By.CSS_SELECTOR, '[name="remove_cart_item"]').click()
         wait.until(EC.staleness_of(data_table))

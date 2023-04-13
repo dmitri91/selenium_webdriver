@@ -23,7 +23,7 @@ def open_directory(driver):
         driver.find_element(By.CSS_SELECTOR, ".fa-folder + a").click()
         lens = len(driver.find_elements(By.CSS_SELECTOR, '.fa-folder + a'))
 
-def test_new_window(driver):
+def test_message_in_browser(driver):
     driver.find_element(By.XPATH, "//*[contains(text(),'Catalog')]").click()
     open_directory(driver)
     for i in range(0, len(driver.find_elements(By.CSS_SELECTOR, 'td:nth-child(3)>a'))):
